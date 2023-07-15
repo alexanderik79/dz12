@@ -33,11 +33,15 @@ public class Main {
 
         for (int i = 0; i < 10; i++) {
             Thread threadCr1 = new Thread(creature1);
-            Thread threadCr2 = new Thread(creature2);
             threadCr1.start();
+//            threadCr1.join(); // если раскомментировать то фраза "The end" будет в конце
+        }
+        for (int i = 0; i < 10; i++) {
+            Thread threadCr2 = new Thread(creature2);
             threadCr2.start();
 //            threadCr2.join(); // если раскомментировать то фраза "The end" будет в конце
         }
+
 
         System.out.println("The end");
     }
