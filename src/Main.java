@@ -1,6 +1,6 @@
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args)  {
 
         First first = new First();
         Thread thread1 = new Thread(first);
@@ -23,26 +23,37 @@ public class Main {
         new Thread(rnbl).start();
 
         Fourth fourth = new Fourth();
-        for (int i = 0; i <10; i++) {
+        for (int i = 0; i < 10; i++) {
             Thread thread4 = new Thread(fourth);
             thread4.start();
         }
 
-        Creature creature1 = new Creature("Egg");
-        Creature creature2 = new Creature("Chicken");
+//        Creature creature1 = new Creature("Egg");
+//        Creature creature2 = new Creature("Chicken");
 
-        for (int i = 0; i < 10; i++) {
-            Thread threadCr1 = new Thread(creature1);
-            threadCr1.start();
+//        for (int i = 0; i < 10; i++) {
+//            Thread threadCr1 = new Thread(creature1);
+//            threadCr1.start();
 //            threadCr1.join(); // если раскомментировать то фраза "The end" будет в конце
-        }
+//        }
         for (int i = 0; i < 10; i++) {
-            Thread threadCr2 = new Thread(creature2);
-            threadCr2.start();
+            Runnable threadCr = () -> {
+                System.out.println("Chicken");
+            };
+            Runnable threadCr2 = () -> {
+                System.out.println("Egg");
+            };
+            new Thread(threadCr).start();
+            new Thread(threadCr2).start();
+
+
+
+
+//            Thread threadCr2 = new Thread(creature2);
+//            threadCr2.start();
 //            threadCr2.join(); // если раскомментировать то фраза "The end" будет в конце
+
+            }
+            System.out.println("The end");
         }
-
-
-        System.out.println("The end");
     }
-}
